@@ -38,5 +38,4 @@ NOTE:
 				   Data Alignment？
 
 
-
 	I guess the function is to find a certain number in an arranged doubly linked list.
