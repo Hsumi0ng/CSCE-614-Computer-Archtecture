@@ -1,2 +1,5 @@
 # CSCE-614-Computer-Archtecture
-Storing some homework codes
+
+CSCE-614 INSTRUCTOR: Professor D.Jiminez !
+
+Storing some homework codes.
