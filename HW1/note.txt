@@ -1,0 +1,6 @@
+HW1.1 is about truthtable implementation using limited only-NAND gate or other gates.  IT's so hard to reduce the gates without using systhesis EDA.
+I do this stuff using EDAplayground. Luckily, i got 100 for this work.
+
+HW1.2 is about MACHINE CODE! I have no knowledge about this before. About how to change bitstream into assembly language!
+Thanks to this HW, i gained more knowledges about X86 ISA.
+
