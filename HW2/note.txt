@@ -1,0 +1,5 @@
+HW2 is a realization of a one-level cache about cache_setting/cache_loading & cache_replacement!
+
+A good code work to getting familiar to the CACHE principle.
+
+See more on Quantitative Book Appendix B.
