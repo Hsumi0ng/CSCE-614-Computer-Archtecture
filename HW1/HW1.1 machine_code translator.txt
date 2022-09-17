@@ -1,0 +1,42 @@
+#address  			#machine code           #assembly code				         #Comment
+004007b2 			  4889f8 			            mov rax, rdi					        // Move the first argument to Register RAX, namely  one of the address in the linked list.
+004007b5 			  4885ff				          test rdi, rdi					        // Set ZeroF lag  to 1 if RDI == 0.  Here is to check the address != NULL
+004007b8 			  741e 				            je 1oc_ 004007d8				      // If    RDI = NULL, then jump to the 0x004007d8, else continue to next line. 
+004007ba			  8b17				            mov edx, DWORD PTR [rdi]		   // Move the content under the address rdi to EDX, namely the first parameter of the struct----A INT number 
+004007bc 			  39f2				            cmp edx,esi					          // Compare the INT number (EDX) with the second argument of the function ( Another INT number to ESI)
+004007be 			  7d0b				            jge 1oc_ 004007cb				      // If EDX>=ESI, Jump to the 0x004007cb
+004007c0 			  488b7f10			          mov rdi, QWORD PTR [rdi+0x10]		// Move the third parameter of the struct to the RDI, point to the next node address
+004007c4 			  e8e9ffffff			        call func_ 004007b2				      // Repeat the function
+004007c9 			  f3c3				            repz ret					              // Get out of the function.
+
+004007cb							                  loc_ 004007cb:				            // 1st jump branch
+004007cb 			  39f2				            cmp edx,esi					              // Compare the INT number again
+004007cd 			  7e09				            jle 1oc_ 004007d8				          // If EDX<=ESI,then jump to 0x004007d8, namely find the same number in the list ( EDX == ESI)
+004007cf 			  488b7f08			          mov rdi , QWORD PTR [rdi+0x8]                        // If the EDX<ESI, then move the second parameter of the struct to the RDI, point to the prior node address
+004007d3 			  e8daffffff			        call func_ 004007b2				        // Repeat the function
+
+004007d8							                  loc_ 004007d8:				            // 2nd jump branch
+004007d8 			  f3c3				            repz ret					                // Get out of the function. Now the RDI is the address of  a certain number you wanna find
+
+
+
+NOTE:
+		struct s * f (struct s *, int);          RDI = struct s* ( An address) ,  ESI = Int ( An int number)
+		
+		struct s {			    This i think is a doubly linked list.
+			int a;			    RDI points to the int a address
+			struct s *b, *c;		    [RDI+0x8] points to the *b address, which contains the prior node's address, [RDI+0x10] points to the *c address, which contains the next node's address
+			};
+		
+	*STRUCT here in the memory ( hope it's right)
+
+		[[	int	].[	nothing	],[	prior address		],[	next address		]]
+		   4bits     4bits			      2bits			      2bits
+		↑					              ↑				            ↑
+		RDI					           RDI+0x8			     RDI+0x10
+					        ↑
+				   Data Alignment？
+
+
+
+	I guess the function is to find a certain number in an arranged doubly linked list.
